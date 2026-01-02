@@ -41,7 +41,7 @@ jobs:
         run: flutter pub get
 
       - name: Build web
-        run: flutter build web --release
+        run: flutter build web --release --base-href "./" --web-renderer html
 
       - name: Deploy FTPS
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
