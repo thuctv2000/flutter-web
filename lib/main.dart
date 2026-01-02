@@ -3,8 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'dart:async';
 
 void main() {
-  // Disable fetching fonts from Google CDN - use system fonts instead
-  GoogleFonts.config.allowRuntimeFetching = false;
   runApp(const MyApp());
 }
 
@@ -17,7 +15,7 @@ class MyApp extends StatelessWidget {
       title: 'Countdown to Tết 2026',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        fontFamily: 'Arial',
+        fontFamily: GoogleFonts.roboto().fontFamily,
         colorScheme: ColorScheme.fromSeed(
           seedColor: Colors.red,
           brightness: Brightness.dark,
