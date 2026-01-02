@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
       title: 'Countdown to Tết 2026',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        fontFamily: 'Arial',
         colorScheme: ColorScheme.fromSeed(
           seedColor: Colors.red,
           brightness: Brightness.dark,
