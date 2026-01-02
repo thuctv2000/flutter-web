@@ -1,17 +1,32 @@
-name: Flutter Web CI/CD
+name: Flutter Web CI/CD (Fast)
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
+    paths:
+      - lib/**
+      - web/**
+      - pubspec.yaml
+      - pubspec.lock
 
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
+
+      # Cache Flutter SDK + pub packages
+      - name: Cache Flutter & Pub
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.pub-cache
+            /opt/hostedtoolcache/flutter
+          key: flutter-${{ runner.os }}-${{ hashFiles('pubspec.lock') }}
+          restore-keys: |
+            flutter-${{ runner.os }}-
 
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
@@ -19,13 +34,16 @@ jobs:
           flutter-version: '3.38.5'
           channel: 'stable'
 
-      - name: Install dependencies
+      - name: Disable analytics
+        run: flutter config --no-analytics --no-cli-animations
+
+      - name: Pub get
         run: flutter pub get
 
-      - name: Build Flutter Web
+      - name: Build web
         run: flutter build web --release
 
-      - name: Deploy to 123Host (FTPS)
+      - name: Deploy FTPS
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: free02.123host.vn
