@@ -179,18 +179,13 @@ class _TetCountdownPageState extends State<TetCountdownPage> {
                       width: 2,
                     ),
                   ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      const Text(
-                        'Chúc Mừng Năm Mới',
-                        style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.yellow,
-                        ),
-                      ),
-                    ],
+                  child: const Text(
+                    'Chúc Mừng Năm Mới',
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.yellow,
+                    ),
                   ),
                 ),
 
