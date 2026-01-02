@@ -191,7 +191,7 @@ class _TetCountdownPageState extends State<TetCountdownPage> {
 
                 // Flower decorations
                 const Text(
-                  '🌸 🏵️ 🌺 🌸 🏵️ 🌺 🌸 🏵️ 🌺 🌸 🏵️ 🌺 ',
+                  '🌸 🏵️ 🌺 🌸 🏵️ 🌺 🌸 🏵️ 🌸 🏵️ 🌺 ',
                   style: TextStyle(fontSize: 30),
                 ),
               ],
