@@ -41,7 +41,7 @@ jobs:
         run: flutter pub get
 
       - name: Build web
-        run: flutter build web --no-web-resources-cdn --web-renderer canvaskit
+        run: flutter build web --no-web-resources-cdn
 
       - name: Deploy FTPS
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
