@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 import 'dart:async';
 
 void main() {
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       title: 'Countdown to Tết 2026',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        fontFamily: GoogleFonts.roboto().fontFamily,
+        fontFamily: 'Roboto',
         colorScheme: ColorScheme.fromSeed(
           seedColor: Colors.red,
           brightness: Brightness.dark,
@@ -193,7 +193,7 @@ class _TetCountdownPageState extends State<TetCountdownPage> {
 
                 // Flower decorations
                 const Text(
-                  '🌸 🏵️ 🌺 🌸 🏵️ 🌺 🌸 🏵️ 🌸',
+                  '🌸 🏵️ 🌺 🌸 🏵️ 🌺 🌸 🏵️ 🌸 ',
                   style: TextStyle(fontSize: 30),
                 ),
               ],
