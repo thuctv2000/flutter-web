@@ -92,9 +92,10 @@ class _TetCountdownPageState extends State<TetCountdownPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 // Lantern decoration
-                const Text(
-                  '🏮',
-                  style: TextStyle(fontSize: 80),
+                Image.asset(
+                  'assets/images/lantern.png',
+                  width: 100,
+                  height: 100,
                 ),
                 const SizedBox(height: 20),
 
@@ -119,13 +120,24 @@ class _TetCountdownPageState extends State<TetCountdownPage> {
                       Color(0xFFFFD700),
                     ],
                   ).createShader(bounds),
-                  child: const Text(
-                    '🐴 TẾT BÍNH NGỌ 2026 🐴',
-                    style: TextStyle(
-                      fontSize: 32,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Image.asset('assets/images/horse.png',
+                          width: 40, height: 40),
+                      const SizedBox(width: 10),
+                      const Text(
+                        'TẾT BÍNH NGỌ 2026',
+                        style: TextStyle(
+                          fontSize: 32,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                      const SizedBox(width: 10),
+                      Image.asset('assets/images/horse.png',
+                          width: 40, height: 40),
+                    ],
                   ),
                 ),
 
@@ -144,7 +156,7 @@ class _TetCountdownPageState extends State<TetCountdownPage> {
                 // Countdown boxes
                 if (_remaining == Duration.zero)
                   const Text(
-                    '🎊 CHÚC MỪNG NĂM MỚI! 🎊',
+                    'CHÚC MỪNG NĂM MỚI!',
                     style: TextStyle(
                       fontSize: 36,
                       fontWeight: FontWeight.bold,
@@ -179,22 +191,43 @@ class _TetCountdownPageState extends State<TetCountdownPage> {
                       width: 2,
                     ),
                   ),
-                  child: const Text(
-                    '🧧 Chúc Mừng Năm Mới 🧧',
-                    style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.yellow,
-                    ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Image.asset('assets/images/red_envelope.png',
+                          width: 30, height: 30),
+                      const SizedBox(width: 10),
+                      const Text(
+                        'Chúc Mừng Năm Mới',
+                        style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.yellow,
+                        ),
+                      ),
+                      const SizedBox(width: 10),
+                      Image.asset('assets/images/red_envelope.png',
+                          width: 30, height: 30),
+                    ],
                   ),
                 ),
 
                 const SizedBox(height: 30),
 
                 // Flower decorations
-                const Text(
-                  '🌸 🏵️ 🌺 🌸 🏵️ 🌺 🌸 🏵️ 🌸 ',
-                  style: TextStyle(fontSize: 30),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: List.generate(
+                    5,
+                    (index) => Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      child: Image.asset(
+                        'assets/images/cherry_blossom.png',
+                        width: 40,
+                        height: 40,
+                      ),
+                    ),
+                  ),
                 ),
               ],
             ),
