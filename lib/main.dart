@@ -103,7 +103,7 @@ class _TetCountdownPageState extends State<TetCountdownPage> {
                     color: Colors.white70,
                   ),
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 8),
 
                 // Tết Title with decoration
                 ShaderMask(
