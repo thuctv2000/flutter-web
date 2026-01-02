@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Horse body -->
+  <ellipse cx="50" cy="60" rx="28" ry="18" fill="#DAA520"/>
+  <ellipse cx="50" cy="60" rx="25" ry="15" fill="#FFD700"/>
+  
+  <!-- Neck -->
+  <path d="M35 50 Q25 35 30 20" stroke="#DAA520" stroke-width="12" fill="none" stroke-linecap="round"/>
+  <path d="M35 50 Q25 35 30 20" stroke="#FFD700" stroke-width="8" fill="none" stroke-linecap="round"/>
+  
+  <!-- Head -->
+  <ellipse cx="28" cy="18" rx="12" ry="10" fill="#DAA520"/>
+  <ellipse cx="28" cy="18" rx="10" ry="8" fill="#FFD700"/>
+  
+  <!-- Snout -->
+  <ellipse cx="18" cy="22" rx="6" ry="5" fill="#DAA520"/>
+  <ellipse cx="18" cy="22" rx="5" ry="4" fill="#FFD700"/>
+  
+  <!-- Eye -->
+  <circle cx="28" cy="15" r="3" fill="#8B4513"/>
+  <circle cx="29" cy="14" r="1" fill="white"/>
+  
+  <!-- Ears -->
+  <path d="M22 8 L20 2 L26 6" fill="#FFD700" stroke="#DAA520" stroke-width="1"/>
+  <path d="M32 6 L35 0 L38 8" fill="#FFD700" stroke="#DAA520" stroke-width="1"/>
+  
+  <!-- Mane -->
+  <path d="M30 10 Q40 15 38 25 Q45 20 42 30 Q50 25 48 35" stroke="#B8860B" stroke-width="3" fill="none" stroke-linecap="round"/>
+  
+  <!-- Legs -->
+  <rect x="30" y="72" width="6" height="20" rx="2" fill="#DAA520"/>
+  <rect x="40" y="72" width="6" height="22" rx="2" fill="#DAA520"/>
+  <rect x="55" y="72" width="6" height="22" rx="2" fill="#DAA520"/>
+  <rect x="65" y="72" width="6" height="20" rx="2" fill="#DAA520"/>
+  
+  <!-- Hooves -->
+  <rect x="29" y="90" width="8" height="4" rx="1" fill="#8B4513"/>
+  <rect x="39" y="92" width="8" height="4" rx="1" fill="#8B4513"/>
+  <rect x="54" y="92" width="8" height="4" rx="1" fill="#8B4513"/>
+  <rect x="64" y="90" width="8" height="4" rx="1" fill="#8B4513"/>
+  
+  <!-- Tail -->
+  <path d="M78 55 Q90 50 88 65 Q95 60 90 75" stroke="#B8860B" stroke-width="4" fill="none" stroke-linecap="round"/>
+</svg>

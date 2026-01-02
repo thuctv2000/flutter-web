@@ -92,12 +92,6 @@ class _TetCountdownPageState extends State<TetCountdownPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 // Lantern decoration
-                Image.asset(
-                  'assets/images/lantern.png',
-                  width: 100,
-                  height: 100,
-                ),
-                const SizedBox(height: 20),
 
                 // Title
                 const Text(
@@ -123,9 +117,6 @@ class _TetCountdownPageState extends State<TetCountdownPage> {
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Image.asset('assets/images/horse.png',
-                          width: 40, height: 40),
-                      const SizedBox(width: 10),
                       const Text(
                         'TẾT BÍNH NGỌ 2026',
                         style: TextStyle(
@@ -134,9 +125,6 @@ class _TetCountdownPageState extends State<TetCountdownPage> {
                           color: Colors.white,
                         ),
                       ),
-                      const SizedBox(width: 10),
-                      Image.asset('assets/images/horse.png',
-                          width: 40, height: 40),
                     ],
                   ),
                 ),
@@ -194,9 +182,6 @@ class _TetCountdownPageState extends State<TetCountdownPage> {
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Image.asset('assets/images/red_envelope.png',
-                          width: 30, height: 30),
-                      const SizedBox(width: 10),
                       const Text(
                         'Chúc Mừng Năm Mới',
                         style: TextStyle(
@@ -205,9 +190,6 @@ class _TetCountdownPageState extends State<TetCountdownPage> {
                           color: Colors.yellow,
                         ),
                       ),
-                      const SizedBox(width: 10),
-                      Image.asset('assets/images/red_envelope.png',
-                          width: 30, height: 30),
                     ],
                   ),
                 ),
@@ -215,20 +197,6 @@ class _TetCountdownPageState extends State<TetCountdownPage> {
                 const SizedBox(height: 30),
 
                 // Flower decorations
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: List.generate(
-                    5,
-                    (index) => Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8),
-                      child: Image.asset(
-                        'assets/images/cherry_blossom.png',
-                        width: 40,
-                        height: 40,
-                      ),
-                    ),
-                  ),
-                ),
               ],
             ),
           ),
