@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'dart:async';
 
 void main() {
+  // Disable fetching fonts from Google CDN - use system fonts instead
+  GoogleFonts.config.allowRuntimeFetching = false;
   runApp(const MyApp());
 }
 
