@@ -129,7 +129,7 @@ class _TetCountdownPageState extends State<TetCountdownPage> {
                   ),
                 ),
 
-                const SizedBox(height: 10),
+                const SizedBox(height: 8),
                 const Text(
                   '17 Tháng 2, 2026',
                   style: TextStyle(
