@@ -1,12 +1,18 @@
 import 'package:go_router/go_router.dart';
 import '../../features/countdown/presentation/pages/tet_countdown_page.dart';
+import '../../features/home/presentation/pages/landing_page.dart';
+import '../../features/auth/presentation/pages/login_page.dart';
 
 final appRouter = GoRouter(
-  initialLocation: '/countdown',
+  initialLocation: '/',
   routes: [
     GoRoute(
       path: '/',
-      redirect: (_, __) => '/countdown',
+      builder: (context, state) => const LandingPage(),
+    ),
+    GoRoute(
+      path: '/login',
+      builder: (context, state) => const LoginPage(),
     ),
     GoRoute(
       path: '/countdown',

@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 import 'core/router/app_router.dart';
 
-void main() {
+import 'injection_container.dart' as di;
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await di.init();
   usePathUrlStrategy();
   runApp(const MyApp());
 }
