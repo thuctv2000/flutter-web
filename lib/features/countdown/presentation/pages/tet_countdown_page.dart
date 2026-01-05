@@ -1,52 +1,26 @@
 import 'package:flutter/material.dart';
-import 'dart:async';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../bloc/countdown_bloc.dart';
+import '../bloc/countdown_event.dart';
+import '../bloc/countdown_state.dart';
 
-class TetCountdownPage extends StatefulWidget {
+class TetCountdownPage extends StatelessWidget {
   const TetCountdownPage({super.key});
 
   @override
-  State<TetCountdownPage> createState() => _TetCountdownPageState();
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (_) => CountdownBloc()..add(const CountdownStarted()),
+      child: const _TetCountdownView(),
+    );
+  }
 }
 
-class _TetCountdownPageState extends State<TetCountdownPage> {
-  // Tết Nguyên Đán 2026: 17/02/2026 (Mùng 1 Tết - Năm Bính Ngọ)
-  final DateTime tetDate = DateTime(2026, 2, 17, 0, 0, 0);
-
-  Duration _remaining = Duration.zero;
-  Timer? _timer;
-
-  @override
-  void initState() {
-    super.initState();
-    _updateRemaining();
-    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      _updateRemaining();
-    });
-  }
-
-  void _updateRemaining() {
-    final now = DateTime.now();
-    setState(() {
-      _remaining = tetDate.difference(now);
-      if (_remaining.isNegative) {
-        _remaining = Duration.zero;
-      }
-    });
-  }
-
-  @override
-  void dispose() {
-    _timer?.cancel();
-    super.dispose();
-  }
+class _TetCountdownView extends StatelessWidget {
+  const _TetCountdownView();
 
   @override
   Widget build(BuildContext context) {
-    final days = _remaining.inDays;
-    final hours = _remaining.inHours % 24;
-    final minutes = _remaining.inMinutes % 60;
-    final seconds = _remaining.inSeconds % 60;
-
     return Title(
       title: 'Đếm Ngược Tết 2026',
       color: const Color(0xFFB71C1C),
@@ -117,30 +91,43 @@ class _TetCountdownPageState extends State<TetCountdownPage> {
                   const SizedBox(height: 50),
 
                   // Countdown boxes
-                  if (_remaining == Duration.zero)
-                    const Text(
-                      'CHÚC MỪNG NĂM MỚI!',
-                      style: TextStyle(
-                        fontSize: 36,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.yellow,
-                      ),
-                    )
-                  else
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        _buildTimeBox(days.toString().padLeft(2, '0'), 'NGÀY'),
-                        _buildSeparator(),
-                        _buildTimeBox(hours.toString().padLeft(2, '0'), 'GIỜ'),
-                        _buildSeparator(),
-                        _buildTimeBox(
-                            minutes.toString().padLeft(2, '0'), 'PHÚT'),
-                        _buildSeparator(),
-                        _buildTimeBox(
-                            seconds.toString().padLeft(2, '0'), 'GIÂY'),
-                      ],
-                    ),
+                  BlocBuilder<CountdownBloc, CountdownState>(
+                    builder: (context, state) {
+                      final duration = state.duration;
+                      final days = duration.inDays;
+                      final hours = duration.inHours % 24;
+                      final minutes = duration.inMinutes % 60;
+                      final seconds = duration.inSeconds % 60;
+
+                      if (duration == Duration.zero) {
+                        return const Text(
+                          'CHÚC MỪNG NĂM MỚI!',
+                          style: TextStyle(
+                            fontSize: 36,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.yellow,
+                          ),
+                        );
+                      }
+
+                      return Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          _buildTimeBox(
+                              days.toString().padLeft(2, '0'), 'NGÀY'),
+                          _buildSeparator(),
+                          _buildTimeBox(
+                              hours.toString().padLeft(2, '0'), 'GIỜ'),
+                          _buildSeparator(),
+                          _buildTimeBox(
+                              minutes.toString().padLeft(2, '0'), 'PHÚT'),
+                          _buildSeparator(),
+                          _buildTimeBox(
+                              seconds.toString().padLeft(2, '0'), 'GIÂY'),
+                        ],
+                      );
+                    },
+                  ),
 
                   const SizedBox(height: 60),
 
@@ -149,10 +136,10 @@ class _TetCountdownPageState extends State<TetCountdownPage> {
                     padding: const EdgeInsets.symmetric(
                         horizontal: 30, vertical: 15),
                     decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.15),
+                      color: Colors.white.withValues(alpha: 0.15),
                       borderRadius: BorderRadius.circular(30),
                       border: Border.all(
-                        color: Colors.yellow.withOpacity(0.5),
+                        color: Colors.yellow.withValues(alpha: 0.5),
                         width: 2,
                       ),
                     ),
@@ -181,15 +168,15 @@ class _TetCountdownPageState extends State<TetCountdownPage> {
       width: 75,
       padding: const EdgeInsets.symmetric(vertical: 15),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.2),
+        color: Colors.white.withValues(alpha: 0.2),
         borderRadius: BorderRadius.circular(15),
         border: Border.all(
-          color: Colors.yellow.withOpacity(0.5),
+          color: Colors.yellow.withValues(alpha: 0.5),
           width: 2,
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.3),
+            color: Colors.black.withValues(alpha: 0.3),
             blurRadius: 10,
             offset: const Offset(0, 5),
           ),

@@ -36,6 +36,7 @@ class _LoginPageState extends State<LoginPage> {
 
     result.fold(
       (failure) {
+        debugPrint(failure.toString());
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
               content: Text(failure
@@ -43,6 +44,7 @@ class _LoginPageState extends State<LoginPage> {
         );
       },
       (user) {
+        debugPrint(user.toString());
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Đăng nhập thành công: ${user.email}')),
         );

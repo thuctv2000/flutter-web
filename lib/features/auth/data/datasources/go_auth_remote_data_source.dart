@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import '../../../../core/error/exceptions.dart';
+import '../../../../core/constants/app_constants.dart';
 import '../models/user_model.dart';
 import 'auth_remote_data_source.dart';
 
@@ -8,7 +9,7 @@ class GoAuthRemoteDataSource implements AuthRemoteDataSource {
   final String baseUrl;
 
   GoAuthRemoteDataSource(
-      {required this.dio, this.baseUrl = 'http://localhost:8081'});
+      {required this.dio, this.baseUrl = AppConstants.apiBaseUrl});
 
   @override
   Future<UserModel> login(String email, String password) async {
@@ -29,7 +30,22 @@ class GoAuthRemoteDataSource implements AuthRemoteDataSource {
         throw ServerException('Login failed: ${response.statusCode}');
       }
     } on DioException catch (e) {
-      throw ServerException(e.message ?? 'Unknown error');
+      final data = e.response?.data;
+      if (data is Map<String, dynamic> && data.containsKey('error')) {
+        final errorMessage = data['error'];
+        // Optional: Map backend English errors to Vietnamese here if desired
+        if (errorMessage == 'invalid credentials') {
+          throw ServerException('Thông tin đăng nhập không chính xác');
+        }
+        throw ServerException(errorMessage);
+      }
+
+      if (e.response?.statusCode == 401) {
+        throw ServerException('Thông tin đăng nhập không chính xác');
+      } else if (e.response?.statusCode == 400) {
+        throw ServerException('Dữ liệu không hợp lệ');
+      }
+      throw ServerException(e.message ?? 'Lỗi kết nối máy chủ');
     }
   }
 
@@ -60,6 +76,10 @@ class GoAuthRemoteDataSource implements AuthRemoteDataSource {
         throw ServerException('Registration failed: ${response.statusCode}');
       }
     } on DioException catch (e) {
+      final data = e.response?.data;
+      if (data is Map<String, dynamic> && data.containsKey('error')) {
+        throw ServerException(data['error']);
+      }
       throw ServerException(e.message ?? 'Unknown error');
     }
   }
