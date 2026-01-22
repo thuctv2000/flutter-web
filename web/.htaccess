@@ -7,11 +7,34 @@
   RewriteRule . /index.html [L]
 </IfModule>
 
+# Enable Gzip Compression
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE application/wasm
+  AddOutputFilterByType DEFLATE application/javascript
+  AddOutputFilterByType DEFLATE text/javascript
+  AddOutputFilterByType DEFLATE text/html
+  AddOutputFilterByType DEFLATE text/css
+  AddOutputFilterByType DEFLATE application/json
+</IfModule>
+
+# Cache static assets
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType application/wasm "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/jpeg "access plus 1 month"
+</IfModule>
+
 <IfModule mod_headers.c>
   <FilesMatch "\.(html|json)$">
     Header set Cache-Control "no-cache, no-store, must-revalidate"
   </FilesMatch>
   <FilesMatch "main.dart.js">
     Header set Cache-Control "no-cache, no-store, must-revalidate"
+  </FilesMatch>
+  <FilesMatch "\.(wasm|js|css|png|jpg|jpeg)$">
+    Header set Cache-Control "public, max-age=31536000"
   </FilesMatch>
 </IfModule>
