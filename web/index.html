@@ -61,13 +61,10 @@
 <body>
 
   <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.getRegistrations().then(function (registrations) {
-        for (let registration of registrations) {
-          registration.unregister();
-        }
-      });
-    }
+    // Load CanvasKit from Google CDN for faster loading
+    window.flutterConfiguration = {
+      canvasKitBaseUrl: "https://www.gstatic.com/flutter-canvaskit/cb4b5fff73/"
+    };
   </script>
   <script src="flutter_bootstrap.js?v=002" async></script>
 </body>
