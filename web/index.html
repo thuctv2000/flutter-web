@@ -56,17 +56,25 @@
   <link rel="icon" type="image/png" href="favicon.png" />
   <link rel="manifest" href="manifest.json">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Preload CanvasKit for faster initial load -->
+  <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://www.gstatic.com">
 </head>
 
 <body>
 
   <script>
-    // Load CanvasKit from Google CDN for faster loading
-    window.flutterConfiguration = {
-      canvasKitBaseUrl: "https://www.gstatic.com/flutter-canvaskit/cb4b5fff73/"
-    };
+    // Unregister old service workers to prevent caching issues
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then(function(registrations) {
+        for (let registration of registrations) {
+          registration.unregister();
+        }
+      });
+    }
   </script>
-  <script src="flutter_bootstrap.js?v=003" async></script>
+  <script src="flutter_bootstrap.js?v=005" async></script>
 </body>
 
 </html>
