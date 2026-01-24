@@ -79,7 +79,7 @@ class _LoginPageState extends State<LoginPage> {
           ),
           child: Row(
             children: [
-              // Left Side - Form
+              // Left Side
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.all(48.0),
