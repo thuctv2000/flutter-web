@@ -74,7 +74,13 @@
       });
     }
   </script>
-  <script src="flutter_bootstrap.js?v=005" async></script>
+  <script>
+    // Load flutter_bootstrap.js với timestamp để tránh cache
+    var script = document.createElement('script');
+    script.src = 'flutter_bootstrap.js?v=' + Date.now();
+    script.async = true;
+    document.body.appendChild(script);
+  </script>
 </body>
 
 </html>
