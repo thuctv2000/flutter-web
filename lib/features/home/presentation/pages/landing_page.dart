@@ -12,10 +12,10 @@ class LandingPage extends StatelessWidget {
         actions: [
           TextButton.icon(
             onPressed: () => context.go('/login'),
-            icon: const Icon(Icons.login),
+            icon: const Icon(Icons.login, color: Colors.white),
             label: const Text('Đăng nhập'),
             style: TextButton.styleFrom(
-              foregroundColor: Theme.of(context).primaryColor,
+              foregroundColor: Colors.white,
             ),
           ),
           const SizedBox(width: 16),
