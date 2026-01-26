@@ -12,8 +12,8 @@ class LandingPage extends StatelessWidget {
         actions: [
           TextButton.icon(
             onPressed: () => context.go('/login'),
-            icon: const Icon(Icons.login, color: Colors.white),
-            label: const Text('Đăng nhập'),
+            icon: const Icon(Icons.login, color: Colors.white, size: 24),
+            label: const Text('🔐 Đăng nhập'),
             style: TextButton.styleFrom(
               foregroundColor: Colors.white,
             ),
